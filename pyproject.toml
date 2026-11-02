@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lego-llm"
+version = "1.0.0"
+description = "Generate buildable LEGO models and instructions from natural language"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "numpy>=1.26.4",
+  "jsonschema>=4.26.0",
+  "openai>=2.20,<3",
+  "python-dotenv>=1.2.4",
+]
+
+[project.optional-dependencies]
+web = ["fastapi>=0.110", "uvicorn>=0.29"]
+test = ["pytest>=8.3.3"]
+
+[project.scripts]
+lego-llm = "lego_llm.web3d_pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
